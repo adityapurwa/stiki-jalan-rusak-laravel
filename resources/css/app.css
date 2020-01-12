@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+
+:root {
+    --body-bg: #dbe7ed;
+    --body-fg: #333;
+    --accent: #2c52de;
+    --accent-a50: #2c52deaa;
+    --accent-dark: #2545bb;
+    --accent-light: #466bef;
+    --error-bg: #f14343;
+    --error-fg: #fff;
+    --font-default: 'Roboto';
+    --font-light: 300;
+    --font-normal: 400;
+    --font-heavy: 700;
+    --font-small: 12px;
+    --font-medium: 14px;
+    --font-large: 16px;
+    --font-h1: 32px;
+    --font-h2: 24px;
+    --font-h3: 22px;
+    --font-h4: 20px;
+    --font-h5: 18px;
+    --font-h6: 18px;
+    --speed-fast: 0.2s;
+    --speed-normal: 0.5s;
+    --speed-slow: 1s;
+    --l1-shadow: 0 12px 12px rgba(0, 0, 0, .025);
+    --border-radius: 2px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: var(--font-default);
+    font-weight: var(--font-normal);
+    font-size: var(--font-medium);
+}
+
+body {
+    background: var(--body-bg);
+    color: var(--body-fg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-normal);
+}
+
+h1 {
+    font-size: var(--font-h1);
+}
+
+h2 {
+    font-size: var(--font-h2);
+}
+
+h3 {
+    font-size: var(--font-h3);
+}
+
+h4 {
+    font-size: var(--font-h4);
+}
+
+h5 {
+    font-size: var(--font-h5);
+}
+
+h6 {
+    font-size: var(--font-h6);
+}
+
+
+.align-right {
+    text-align: right;
+}

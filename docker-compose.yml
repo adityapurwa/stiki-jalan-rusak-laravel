@@ -1,0 +1,17 @@
+version: '3'
+services:
+  database:
+    image: 'mysql:8.0'
+    container_name: 'lapor-jalan-db'
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=stiki
+      - MYSQL_DATABASE=stiki
+      - MYSQL_USER=stiki
+      - MYSQL_PASSWORD=stiki
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/sql:/docker-entrypoint-initdb.d
+    network_mode: "host"
