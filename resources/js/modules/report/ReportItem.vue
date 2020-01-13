@@ -3,7 +3,7 @@
         <div class="report-text">
             <div class="report-meta">
                 <div class="report-author">
-                    {{ report.user_name }}
+                    {{ report.user.name }}
                 </div>
                 <time class="report-time">
                     {{ report.created_at | date }}
@@ -20,6 +20,7 @@
             </div>
             <address class="report-address">
                 {{ report.address }}
+                <span v-if="report.district">[Kecamatan: {{report.district}}]</span>
             </address>
             <div class="report-actions" v-if="isLoggedIn">
                 <Button
@@ -83,7 +84,7 @@
         },
         computed: {
             getReportImageUrl () {
-                return `/storage/${this.report.photo}`
+                return `/storage/${this.report.photo.replace(/^public\//, '')}`
             },
             isLoggedIn () {
                 return !!this.$store.state.user.user
@@ -93,7 +94,9 @@
             date: function (val) {
                 const date = new Date(val)
                 const dateFormat = new Intl.DateTimeFormat('id-ID')
-                return `${dateFormat.format(date)}, ${date.getHours()}:${date.getMinutes()}`
+                return `${dateFormat.format(date)}, ${date.getHours()}
+            :${date.getMinutes()}
+            `
             }
         },
         methods: {

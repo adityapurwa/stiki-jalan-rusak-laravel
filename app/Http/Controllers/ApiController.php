@@ -15,10 +15,7 @@ class ApiController extends Controller
         $search = '%' . $request->get('search') . '%';
         $userId = Auth::user() ? Auth::user()->getAuthIdentifier() : null;
 
-        $reports = Report::query()
-            ->where('address', 'like', $search)
-            ->where('cache_votes', '>', -10)
-            ->paginate();
+        $reports = Report::getVisibleReports($search);
 
         $reportIds = array_map(function (Report $report) {
             return $report->id;
@@ -53,6 +50,7 @@ class ApiController extends Controller
     {
 
         $address = $request->get('address');
+        $district = $request->get('district');
         $photo = $request->file('photo');
         $userId = Auth::user()->getAuthIdentifier();
 
@@ -68,6 +66,7 @@ class ApiController extends Controller
 
         $report = Report::query()->create([
             'address' => $address,
+            'district' => $district,
             'photo' => $photoName,
             'user_id' => $userId
         ]);

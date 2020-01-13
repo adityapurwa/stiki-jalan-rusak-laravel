@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="199f8b06-6403-47fe-bf56-6b4b227c2710" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8afa4748-94f2-476c-ae5f-d64eacae937d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8afa4748-94f2-476c-ae5f-d64eacae937d.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/modules/report/ReportForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modules/report/ReportForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/modules/report/ReportItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modules/report/ReportItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/modules/report/ReportList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modules/report/ReportList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/modules/user/LoginForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modules/user/LoginForm.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,12 +241,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:stiki@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@4f801b27" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:stiki@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@56572f1c" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@71d84d43" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -257,7 +261,8 @@
       <option name="presentableId" value="Default" />
       <updated>1578794156063</updated>
       <workItem from="1578794159332" duration="5946000" />
-      <workItem from="1578814317530" duration="10124000" />
+      <workItem from="1578814317530" duration="10260000" />
+      <workItem from="1578915738039" duration="1675000" />
     </task>
     <servers />
   </component>
@@ -297,17 +302,21 @@
       <screen x="46" y="27" width="1320" height="741" />
     </state>
     <state x="217" y="31" width="977" height="737" key="SettingsEditor/46.27.1320.741@46.27.1320.741" timestamp="1578814356420" />
-    <state x="399" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1578814324400">
+    <state x="418" y="42" width="566" height="717" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1578916635885">
       <screen x="46" y="27" width="1320" height="741" />
     </state>
-    <state x="399" y="225" key="com.intellij.ide.util.TipDialog/46.27.1320.741@46.27.1320.741" timestamp="1578814324400" />
+    <state x="418" y="42" width="566" height="717" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/46.27.1320.741@46.27.1320.741" timestamp="1578916635885" />
+    <state x="399" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1578915740209">
+      <screen x="46" y="27" width="1320" height="741" />
+    </state>
+    <state x="399" y="225" key="com.intellij.ide.util.TipDialog/46.27.1320.741@46.27.1320.741" timestamp="1578915740209" />
     <state x="398" y="145" width="615" height="504" key="find.popup" timestamp="1578842664157">
       <screen x="46" y="27" width="1320" height="741" />
     </state>
     <state x="398" y="145" width="615" height="504" key="find.popup/46.27.1320.741@46.27.1320.741" timestamp="1578842664157" />
-    <state x="370" y="40" width="672" height="676" key="search.everywhere.popup" timestamp="1578843448641">
+    <state x="370" y="40" width="672" height="676" key="search.everywhere.popup" timestamp="1578917300390">
       <screen x="46" y="27" width="1320" height="741" />
     </state>
-    <state x="370" y="40" width="672" height="676" key="search.everywhere.popup/46.27.1320.741@46.27.1320.741" timestamp="1578843448641" />
+    <state x="370" y="40" width="672" height="676" key="search.everywhere.popup/46.27.1320.741@46.27.1320.741" timestamp="1578917300390" />
   </component>
 </project>

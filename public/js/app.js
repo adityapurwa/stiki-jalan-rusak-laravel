@@ -2572,6 +2572,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2587,6 +2590,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       address: '',
+      district: '',
       errors: {},
       isLoading: false
     };
@@ -2611,6 +2615,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var formData = new FormData();
       formData.append('address', this.address);
+      formData.append('district', this.district);
       formData.append('photo', photo);
       axios__WEBPACK_IMPORTED_MODULE_5___default.a.post('create-report', formData).then(function (res) {
         _this.$emit('close');
@@ -2720,6 +2725,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2740,7 +2746,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     getReportImageUrl: function getReportImageUrl() {
-      return "/storage/".concat(this.report.photo);
+      return "/storage/".concat(this.report.photo.replace(/^public\//, ''));
     },
     isLoggedIn: function isLoggedIn() {
       return !!this.$store.state.user.user;
@@ -2750,7 +2756,7 @@ __webpack_require__.r(__webpack_exports__);
     date: function date(val) {
       var date = new Date(val);
       var dateFormat = new Intl.DateTimeFormat('id-ID');
-      return "".concat(dateFormat.format(date), ", ").concat(date.getHours(), ":").concat(date.getMinutes());
+      return "".concat(dateFormat.format(date), ", ").concat(date.getHours(), "\n        :").concat(date.getMinutes(), "\n        ");
     }
   },
   methods: {
@@ -2836,6 +2842,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2855,6 +2864,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     isPeak: function isPeak() {
       return (this.page + 1) * this.reportLimit >= this.reportTotal;
+    },
+    isSearchEmpty: function isSearchEmpty() {
+      return this.search.trim().length === 0;
     }
   },
   props: {
@@ -3002,8 +3014,10 @@ __webpack_require__.r(__webpack_exports__);
 
         window.$bus.$emit('toast', 'Anda berhasil masuk');
       })["catch"](function (err) {
-        if (err.response.status === 400 || err.response.status === 422) {
+        if (err.response.status === 422) {
           _this.errors = err.response.data.errors;
+        } else if (err.response.status === 400) {
+          _this.errors = err.response.data;
         } else if (err.response.status === 500 || err.response.status === 403) {
           _this.errors = {
             server: err.response.data.error
@@ -3428,7 +3442,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.report-form[data-v-a30f2d46] {\n\tposition: relative;\n\tmargin-top: 8px;\n\tpadding: 8px;\n}\n.report-form.disabled[data-v-a30f2d46] > :not(.disabler) {\n\tfilter: blur(4px);\n}\n.report-form h3[data-v-a30f2d46] {\n\tmargin-bottom: 16px\n}\n.report-form-buttons[data-v-a30f2d46] {\n\ttext-align: right;\n}\n.disabler[data-v-a30f2d46] {\n\tbackground: rgba(255, 255, 255, 0.75);\n\tz-index: 1;\n\tposition: absolute;\n\twidth: 100%;\n\theight: 100%;\n\ttop: 0;\n\tleft: 0;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n", ""]);
+exports.push([module.i, "\n.report-form[data-v-a30f2d46] {\n    position: relative;\n    margin-top: 8px;\n    padding: 8px;\n}\n.report-form.disabled[data-v-a30f2d46] > :not(.disabler) {\n    filter: blur(4px);\n}\n.report-form h3[data-v-a30f2d46] {\n    margin-bottom: 16px\n}\n.report-form-buttons[data-v-a30f2d46] {\n    text-align: right;\n}\n.disabler[data-v-a30f2d46] {\n    background: rgba(255, 255, 255, 0.75);\n    z-index: 1;\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n", ""]);
 
 // exports
 
@@ -3466,7 +3480,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.list-buttons .button[data-v-3b1cdf92] {\n\tdisplay: block;\n\twidth: 100%;\n}\n\n", ""]);
+exports.push([module.i, "\n.list-buttons .button[data-v-3b1cdf92] {\n    display: block;\n    width: 100%;\n}\n\n", ""]);
 
 // exports
 
@@ -22877,6 +22891,21 @@ var render = function() {
             }
           }),
           _vm._v(" "),
+          _c("TextField", {
+            attrs: {
+              name: "district",
+              label: "Kecamatan (optional)",
+              errors: _vm.errors.district
+            },
+            model: {
+              value: _vm.district,
+              callback: function($$v) {
+                _vm.district = $$v
+              },
+              expression: "district"
+            }
+          }),
+          _vm._v(" "),
           _c("ImageField", {
             ref: "photo",
             attrs: {
@@ -22923,7 +22952,7 @@ var render = function() {
           _c("div", { staticClass: "report-author" }, [
             _vm._v(
               "\n                " +
-                _vm._s(_vm.report.user_name) +
+                _vm._s(_vm.report.user.name) +
                 "\n            "
             )
           ]),
@@ -22966,7 +22995,14 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("address", { staticClass: "report-address" }, [
-          _vm._v("\n            " + _vm._s(_vm.report.address) + "\n        ")
+          _vm._v(
+            "\n            " + _vm._s(_vm.report.address) + "\n            "
+          ),
+          _vm.report.district
+            ? _c("span", [
+                _vm._v("[Kecamatan: " + _vm._s(_vm.report.district) + "]")
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _vm.isLoggedIn
@@ -23093,10 +23129,18 @@ var render = function() {
     "ul",
     { staticClass: "report-list" },
     [
-      _vm.isReportEmpty && !_vm.isLoading
+      _vm.isReportEmpty && !_vm.isLoading && _vm.isSearchEmpty
         ? _c("DefaultAlert", [
             _vm._v(
-              "\n\t\tBelum ada laporan kerusakan jalan yang bisa ditampilkan\n\t"
+              "\n        Belum ada laporan kerusakan jalan yang bisa ditampilkan\n    "
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.isReportEmpty && !_vm.isLoading && !_vm.isSearchEmpty
+        ? _c("DefaultAlert", [
+            _vm._v(
+              "\n        Tidak ada laporan dengan alamat yang dicari\n    "
             )
           ])
         : _vm._e(),
@@ -23207,22 +23251,22 @@ var render = function() {
         [
           _c("DefaultAlert", [
             _vm._v(
-              "\n\t\t\t\tMasuk untuk membuat laporan kerusakan jalan.\n\t\t\t"
+              "\n            Masuk untuk membuat laporan kerusakan jalan.\n        "
             )
           ]),
           _vm._v(" "),
           _vm.errors.server
             ? _c("ErrorAlert", [
-                _vm._v("\n\t\t\t\t" + _vm._s(_vm.errors.server) + "\n\t\t\t")
+                _vm._v(
+                  "\n            " + _vm._s(_vm.errors.server) + "\n        "
+                )
               ])
             : _vm._e(),
           _vm._v(" "),
           _vm.errors.login
             ? _c("ErrorAlert", [
                 _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.errors.login) +
-                    "\n            "
+                  "\n            " + _vm._s(_vm.errors.login) + "\n        "
                 )
               ])
             : _vm._e(),
